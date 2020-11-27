@@ -1,7 +1,13 @@
+const apiKey = "AIzaSyAS9jUgMZt6tH5tou2dqmPG55ZmCL7zlaQ";
+const searchEngineId = "e4d45dc475a45a226";
 let type = '';
 let brand = '';
+let brandText = '';
 let model = '';
+let modelText = '';
 let year = '';
+let yearText = '';
+let result = '';
 
 let marca = document.getElementById('marca');
 let modelo = document.getElementById('modelo');
@@ -13,6 +19,7 @@ const typeSelector = document.getElementById('type');
 const brandSelector = document.getElementById('brand');
 const modelSelector = document.getElementById('model');
 const yearSelector = document.getElementById('year');
+const divImageSelector = document.getElementById('resultado-image');
 
 
 typeSelector.addEventListener('change', Event => {
@@ -35,7 +42,6 @@ modelSelector.addEventListener('change', Event => {
 
 function changeType() {
 	let option = typeSelector.options[typeSelector.selectedIndex];
-
 	type = option.value;
 	updateBrands(type)
 }
@@ -54,8 +60,8 @@ function updateBrands(type) {
 
 function changeBrand() {
 	let option = brandSelector.options[brandSelector.selectedIndex];
-
 	brand = option.value;
+	brandText = option.text;
 	updateModels(brand)
 }
 
@@ -73,9 +79,10 @@ function updateModels(brand) {
 
 function changeModel() {
 	let option = modelSelector.options[modelSelector.selectedIndex];
-
 	model = option.value;
+	modelText = option.text;
 	updateYear(model)
+	updateImage()
 }
 
 function updateYear(model) {
@@ -84,8 +91,34 @@ function updateYear(model) {
 			.then(response => response.json())
 			.then(response => {
 				for (year of response) {
-					yearSelector.innerHTML += `<option value="${year.codigo}">${year.nome}</option>`;
+					console.log();
 				}
 			})
 	}
+}
+
+
+function updateImage() {
+	let urlImage = ''
+	let url = `https://customsearch.googleapis.com/customsearch/v1?cx=${searchEngineId}&num=1&q=${type}%20${brandText}%20${modelText}%20${yearText}&searchType=image&key=${apiKey}`
+	let urlLogo = `https://customsearch.googleapis.com/customsearch/v1?cx=${searchEngineId}&num=1&q=${type}%20logomarca%20${brandText}&searchType=image&key=${apiKey}`
+
+	
+
+	if (type !== '*' && marca !== '*') {
+
+		if (model == '' || model == null || model == '*') {
+			url = urlLogo // Irá buscar apenas a logo da marca
+		}
+
+		console.log('URL:', url);
+
+		fetch(url).then(function (response) {
+			return response.json();
+		}).then(function (obj) {
+			console.log('obj.items:', obj.items);
+			divImageSelector.innerHTML = `<img src="${obj.items[0].link}" alt="${obj.items[0].title}">`
+		})
+	}
+
 }
