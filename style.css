@@ -228,76 +228,6 @@ footer span {
   width: 100%;
 }
 
-/* Tela ao chegar Width = 1000px */
-@media (max-width: 1000px) {
-  #img-logo {
-    width: 120px;
-    /* border: 1px solid pink; */
-  }
-
-  .ul-menu-nav li {
-    /* margin: 0 30px; */
-    font-size: 14px;
-    border: 1px solid white;
-    border-radius: 50px;
-    padding: 12px 20px;
-  }
-}
-
-/* Tela ao chegar Width = 768px */
-@media (max-width: 768px) {
-  .div-header {
-    /* border: 1px solid green;  */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  #img-logo {
-    width: 30%;
-    min-width: 120px;
-    /* border: 1px solid pink; */
-  }
-
-  #bt_menu:checked ~ .ul-menu-nav {
-    display: flex;
-    flex-direction: column;
-    max-height: 500px;
-    visibility: visible;
-    opacity: 1;
-    transition: opacity 3s, visibility 3s, max-height 3s;
-  }
-
-  .ul-menu-nav {
-    width: 100%;
-    /* border: 1px solid purple; */
-    display: flex;
-    flex-direction: column;
-    max-height: 0;
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 0.4s, opacity 0.4s, max-height 2s;
-  }
-
-  .ul-menu-nav li {
-    text-align: center;
-    width: 100%;
-    margin: 2px 30px;
-    padding: 12px 0;
-    border: 1px solid white;
-    border-radius: 50px;
-    /* border-bottom: 1px solid white; */
-  }
-
-  label[for='bt_menu'] {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    display: block;
-  }
-}
-
 /* CSS Consulta.HTML */
 
 .selector {
@@ -478,7 +408,7 @@ footer span {
   border-radius: 0.4rem;
 }
 
-/* Section Sobre Nós */
+/* ------------------------------------ Section Sobre Nós ------------------------------------ */
 
 .section-sobrenos{
   /* border: 1px solid tomato; */
@@ -547,11 +477,173 @@ footer span {
 }
 
 .div-colaboradores.foto-esq div{
-  margin-left: 30px;
+  /* margin-left: 30px; */
 }
 
 .div-colaboradores div{
-  margin-right: 30px;
+  margin: 0 30px;
+  /* border: 1px solid red; */
+}
+
+.div-colaboradores .div-redes-sociais{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.div-colaboradores .redes-sociais-logo{
+  border: 0;
+  border-radius: 0;
+}
+
+/* ------------------------ Tela ao chegar Width = 1000px ------------------------*/
+@media (max-width: 1000px) {
+  #img-logo {
+    width: 120px;
+    /* border: 1px solid pink; */
+  }
+
+  .ul-menu-nav li {
+    /* margin: 0 30px; */
+    font-size: 14px;
+    border: 1px solid white;
+    border-radius: 50px;
+    padding: 12px 20px;
+  }
+}
+
+
+/* ------------------------ Tela ao chegar Width = 768px ------------------------*/
+@media (max-width: 768px) {
+
+/* ------------------------ HEADER ------------------------ */
+
+  .div-header {
+    /* border: 1px solid green;  */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #img-logo {
+    width: 30%;
+    min-width: 120px;
+    /* border: 1px solid pink; */
+  }
+
+  #bt_menu:checked ~ .ul-menu-nav {
+    display: flex;
+    flex-direction: column;
+    max-height: 500px;
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 3s, visibility 3s, max-height 3s;
+  }
+
+  .ul-menu-nav {
+    width: 100%;
+    /* border: 1px solid purple; */
+    display: flex;
+    flex-direction: column;
+    max-height: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.4s, opacity 0.4s, max-height 2s;
+  }
+
+  .ul-menu-nav li {
+    text-align: center;
+    width: 100%;
+    margin: 2px 30px;
+    padding: 12px 0;
+    border: 1px solid white;
+    border-radius: 50px;
+    /* border-bottom: 1px solid white; */
+  }
+
+  label[for='bt_menu'] {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: block;
+  }
+
+
+  /* ------------------------ TELA SOBRE NÓS ------------------------ */
+  .section-sobrenos h1, .section-sobrenos h2{
+    text-align: center;
+  }
+
+  .section-sobrenos .div-colaboradores{
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  .section-sobrenos .div-colaboradores .image-perfil{
+    order: -1;
+    margin-bottom: 10px;
+  }
+
+  .section-sobrenos .div-colaboradores h3{
+    text-align: center;
+  }
+  .section-sobrenos .div-colaboradores p{
+    margin-bottom: 10px;
+
+  }
+
+
+}
+
+/* ------------------------ Tela ao chegar Width = 500px ------------------------*/
+@media(max-width:500px){
+
+
+  /* ------------------------ TELA SOBRE NÓS ------------------------ */
+  .section-sobrenos h1{
+    font-size: 20px;
+    letter-spacing: 1.2px;
+    padding-bottom: 10px;
+
+  }
+
+  .section-sobrenos h2{
+    font-size: 16px;
+    letter-spacing: 1.2px;
+  }
+  
+  #equipe-consulta-fipe{
+    font-size: 16px;
+  }
+  
+  .section-sobrenos {
+    font-size: 14px;
+    letter-spacing: 1.2px;
+    text-align: justify;
+  }
+
+  .div-colaboradores img{
+    width: 100px;
+    border-radius: 50%;
+    border: 3px solid  #ffd369;
+  }
+
+  .div-colaboradores .redes-sociais-logo{
+    width: 40px;
+  }
+
+  #equipe-consulta-fipe{
+    text-align: justify;
+  }
+
+
+
 }
 
 
