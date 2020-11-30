@@ -6,98 +6,96 @@
 	<link rel="stylesheet" href="style.css">
 	<title>Tabela Fipe</title>
 </head>
-<body id="body-consulta">
+<body>
 	<header>
-        <div class="div-header">
-            <input type="checkbox" name="" id="bt_menu">
-            <label for="bt_menu">&#9776;</label>
-            <img id="img-logo" src="images/LogoResponsivo2.png" alt="Logo da Página" >
-            <ul class="ul-menu-nav">
-							<li>
-									<a href="index.html">
-											<button class="button">home</button>
-									</a>
-							</li>
-							<li>
-									<a href="consulta.html">
-											<button class="button">consulta</button>
-									</a>
-							</li>
-							<li>
-									<a href="sobrenos.html">
-											<button class="button">sobre nós</button>
-									</a>
-							</li>
-							<li>
-									<a href="contato.html">
-											<button class="button">contato</button>
-									</a>
-							</li>
-					</ul>
-        </div>
-    </header>
+    <div class="div-header">
+    	<input type="checkbox" name="" id="bt_menu">
+    	<label for="bt_menu">&#9776;</label>
+    	<img id="img-logo" src="images/LogoResponsivo2.png" alt="Logo da Página" >
+    	<ul class="ul-menu-nav">
+				<li>
+						<a href="index.html">
+								<button class="button">home</button>
+						</a>
+				</li>
+				<li>
+						<a href="consulta.html">
+								<button class="button">consulta</button>
+						</a>
+				</li>
+				<li>
+						<a href="sobrenos.html">
+								<button class="button">sobre nós</button>
+						</a>
+				</li>
+				<li>
+						<a href="contato.html">
+								<button class="button">contato</button>
+						</a>
+				</li>
+      </ul>
+    </div>
+  </header>
 
-	<section id="filter-section">
-		<label for="type">Tipo de Veículo: </label>
-		<select name="type" id="type" class="selector">
-			<option value="*">Selecionar</option>
-			<option value="carros">Carros</option>
-			<option value="motos">Motos</option>
-			<option value="caminhoes">Caminhões</option>
-		</select>
-	
-		<br />
-	
-		<label for="brand">Marca do Veículo: </label>
-		<select name="brand" id="brand" class="selector">
-			<option value="*">Selecionar</option>
-		</select>
-	
-		<br />
-	
-		<label for="model">Modelo do Veículo: </label>
-		<select name="model" id="model" class="selector">
-			<option value="*">Selecionar</option>
-		</select>
-		
-		<br />
-	
-		<label for="year">Ano do Veículo: </label>
-		<select name="year" id="year" class="selector">
-			<option value="*">Selecionar</option>
-		</select>
-	</section>
-	
-	<section id="info-section">
-		<label id="marca" for="marca"><strong>Marca:</strong></label>
-		<br />
-		<label id="modelo" for="modelo"><strong>Modelo:</strong></label>
-		<br />
-		<label id="ano" for="ano"><strong>Ano:</strong></label>
-		<br />
-		<label id="combustivel" for="combustivel"><strong>Combustível:</strong></label>
-		<br />
-		<label id="valor" for="valor"><strong>Valor:</strong></label>
-	</section>
+  <div class="container">
+    <section class="filter">
+      <label for="type">Tipo de Veículo</label>
+      <select name="type" id="type" class="selector">
+        <option value="*">Selecionar</option>
+        <option value="carros">Carros</option>
+        <option value="motos">Motos</option>
+        <option value="caminhoes">Caminhões</option>
+      </select>
+    
+      <label for="brand">Marca do Veículo</label>
+      <select name="brand" id="brand" class="selector">
+        <option value="*">Selecionar</option>
+      </select>
+    
+      <label for="model">Modelo do Veículo</label>
+      <select name="model" id="model" class="selector">
+        <option value="*">Selecionar</option>
+      </select>
+    
+      <label for="year">Ano do Veículo</label>
+      <select name="year" id="year" class="selector">
+        <option value="*">Selecionar</option>
+      </select>
 
-	<section id="resultado">
-		<div id="resultado-container">
-			<div id="resultado-image">
-					<img src="https://www.quoteinspector.com/media/car-insurance/car-wallet-md.jpg" alt="Carro">
-			</div >
-			<div id="resultado-valor">
-					Exemplo.... Valor AQUI
-			</div>
+      <div class="show-result">
+        <h3 id="marca" for="marca"><strong>Marca:</strong></h3>
+        <h3 id="modelo" for="modelo"><strong>Modelo:</strong></h3>
+        <h3 id="ano" for="ano"><strong>Ano:</strong></h3>
+        <h3 id="combustivel" for="combustivel"><strong>Combustível:</strong></h3>
+        <h3 id="valor" for="valor"><strong>Valor:</strong></h3>
+      </div>
+    </section>
+  
+    <section class="result">
+      <img src="https://www.quoteinspector.com/media/car-insurance/car-wallet-md.jpg" alt="Carro">
+      <p>Exemplo.... Valor AQUI</p>
+    </section>
+  </div>
+	
+	<footer class="footer">
+		<span>
+				Copyright - Projeto Integrados - Digital House
+		</span>    
+		<div class="social-media">
+				<a href="#">
+						<img src="images/facebook.svg" alt="">
+				</a>
+				<a href="#">
+						<img src="images/instagram.svg" alt="">
+				</a>
+				<a href="#">
+						<img src="images/twitter-alt.svg" alt="">
+				</a>
+				<a href="#">
+						<img src="images/github.svg" alt="">
+				</a>
 		</div>
-	</section>
-
-	<footer>
-        <span class="span-copyright">
-            Copyright - Projeto Integrados - Digital House
-        </span>    
-        <img src="images/logo_instagram2.png" alt="" width="50px">
-        <img src="images/logo_facebook.png" alt="" width="35px">
-    </footer>
+	</footer>
 
 	<script src="script.js"></script>
 </body>
