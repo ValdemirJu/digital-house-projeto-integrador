@@ -1,0 +1,415 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+
+/* CSS Reset */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Formatação do Body */
+body {
+  font-family: 'Roboto', sans-serif;
+  max-width: 100%;
+}
+
+a {
+  outline: none;
+  text-decoration: none;
+}
+
+/* Formatação do Header */
+
+header {
+  /* border: 1px solid tomato; */
+  padding: 10px 0;
+  background-color: #222831;
+}
+
+input,
+button,
+submit {
+  border: none;
+  outline: none;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+#body-index header .div-header ul #item-menu-index,
+#body-index header .div-header ul #item-menu-index a,
+#body-consulta header .div-header ul #item-menu-consulta,
+#body-consulta header .div-header ul #item-menu-consulta a,
+#body-sobrenos header .div-header ul #item-menu-sobrenos,
+#body-sobrenos header .div-header ul #item-menu-sobrenos a,
+#body-contato header .div-header ul #item-menu-contato,
+#body-contato header .div-header ul #item-menu-contato a {
+  background-color: white;
+  color: rgb(49, 48, 48);
+  font-weight: bold;
+}
+
+/* Footer */
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 5rem;
+  background-color: #222831;
+  color: #ffffff88;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+footer span {
+  width: 100vw;
+}
+
+.social-media {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  position: absolute;
+  right: 0;
+  opacity: 30%;
+}
+
+.social-media img {
+  width: 2.2rem;
+  margin: 0.3rem;
+}
+/* Footer (END) */
+
+/* Header */
+.header {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+}
+
+.logo {
+  width: 16rem;
+  /* border: 1px solid pink; */
+}
+
+.header-buttons {
+  width: 100%;
+  /* border: 1px solid purple; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+/* Header (END) */
+
+/* Button */
+.button img {
+  display: none;
+}
+
+.button {
+  width: 12rem;
+  height: 3.5rem;
+  font-size: 0.9rem;
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #fff;
+  border-radius: 10rem;
+  background-color: #393e46;
+  transition-duration: 450ms;
+}
+
+.button:hover {
+  background-color: #ffd369;
+  color: #393e46;
+  transition-duration: 400ms;
+  cursor: pointer;
+  box-shadow: #393e4611 0.2rem 0.3rem 0.2rem 0.15rem;
+}
+
+.button:active {
+  background-color: #ffd269d8;
+}
+/*  Button (END) */
+
+/* Estilização da página HOME */
+
+.title {
+  font-size: 2rem;
+}
+
+.presentation {
+  margin: 3rem 10rem;
+}
+
+.text {
+  padding: 1rem;
+  text-align: justify;
+  word-wrap: break-word;
+  display: flex;
+}
+
+.text p {
+  line-height: 1.25rem;
+  word-spacing: 0.2rem;
+  word-wrap: break-word;
+  margin: 1rem 0;
+}
+
+.text img {
+  flex-wrap: wrap;
+  position: relative;
+  margin: 0 1.5rem;
+  height: fit-content;
+}
+
+.search {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.search button {
+  height: 5rem;
+  width: 20rem;
+  margin: 3rem;
+}
+/* Estilização da página HOME (END) */
+
+/* ------------------------ Tela ao chegar Width = 1000px ------------------------*/
+@media (max-width: 1000px) {
+  .header {
+    flex-direction: column;
+    width: 100vw;
+    margin: 0;
+  }
+
+  .footer {
+    width: 100vw;
+  }
+
+  .social-media img {
+    width: 1rem;
+  }
+
+  .logo {
+    margin: 0 auto;
+    height: auto;
+    width: 16rem;
+    /* border: 1px solid pink; */
+  }
+
+  .button {
+    width: 20vw;
+  }
+
+  .button img {
+    display: none;
+  }
+
+  .presentation {
+    width: 100%;
+    margin: 1rem 0;
+  }
+
+  .text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .text img {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .search {
+    margin-bottom: 5rem;
+  }
+}
+
+/* ------------------------ Tela ao chegar Width = 768px ------------------------*/
+@media (max-width: 600px) {
+  body {
+    font-size: 14px;
+  }
+
+  .footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .footer span {
+    font-size: 0.6rem;
+    margin-bottom: 2rem;
+  }
+
+  .social-media {
+    display: inline-block;
+    width: 100%;
+    bottom: 0;
+    opacity: 30%;
+  }
+
+  .social-media img {
+    width: 1.5rem;
+  }
+
+  .header-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .button {
+    width: 16vw;
+    height: auto;
+    margin: 0.5rem 1rem;
+  }
+
+  .button img {
+    display: inline-block;
+    width: auto;
+    height: auto;
+    margin: 0.5rem;
+  }
+
+  .button p {
+    display: none;
+  }
+
+  .logo {
+    width: 40%;
+    min-width: 11rem;
+    height: auto;
+  }
+}

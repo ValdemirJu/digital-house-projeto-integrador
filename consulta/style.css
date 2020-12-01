@@ -1,0 +1,66 @@
+.show-result {
+  line-height: 1.7rem;
+  color: #393e46;
+  font-size: 1.2em;
+}
+
+.result {
+  width: auto;
+  margin-left: 10rem;
+}
+
+.result p {
+  text-align: center;
+  margin: 1rem;
+  font-size: 1.2rem;
+}
+
+.result img {
+  border-radius: 0.4rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10rem;
+  padding: 3rem 10rem;
+}
+
+.filter {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-content: center;
+  width: 40rem;
+}
+
+.filter label {
+  margin-bottom: 0.35rem;
+  margin-left: 1rem;
+  color: #393e469a;
+  font-size: 0.9rem;
+}
+
+.filter select {
+  padding: 0.75rem;
+  border: 0.15rem solid #393e4622;
+  font-size: 1rem;
+  color: #6f6f6f;
+  border-radius: 2rem;
+  background-color: #eeeeee5d;
+  margin-bottom: 1.4rem;
+  font-weight: 400;
+}
+
+.filter select:focus {
+  outline: none;
+}
+
+.filter select:hover {
+  cursor: pointer;
+  color: #393e46;
+  transition: 400ms;
+  border: 0.15rem solid #ffd369;
+}
