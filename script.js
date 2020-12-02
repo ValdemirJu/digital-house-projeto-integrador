@@ -91,6 +91,7 @@ function updateYear(model) {
 			.then(response => response.json())
 			.then(response => {
 				for (year of response) {
+					yearSelector.innerHTML += `<option value="${year.codigo}">${year.nome}</option>`;
 					console.log();
 				}
 			})
