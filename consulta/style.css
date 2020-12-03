@@ -1,12 +1,14 @@
+* {
+  border: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
 .show-result {
   line-height: 1.7rem;
   color: #393e46;
   font-size: 1.2em;
-}
-
-.result {
-  width: auto;
-  margin-left: 10rem;
+  display: none;
 }
 
 .result p {
@@ -15,25 +17,27 @@
   font-size: 1.2rem;
 }
 
-.result img {
-  border-radius: 0.4rem;
-}
-
 .container {
   display: flex;
   flex-direction: row;
-  justify-content: center;
   align-items: center;
   margin-bottom: 10rem;
-  padding: 3rem 10rem;
+  padding: 2rem 5rem;
 }
 
 .filter {
   display: flex;
   flex-direction: column;
-  align-self: center;
-  justify-content: center;
-  width: 40rem;
+  width: 100%;
+  height: auto;
+  margin: 1rem;
+}
+
+.result img {
+  border-radius: 0.4rem;
+  width: 100%;
+  height: auto;
+  margin: 1rem;
 }
 
 .filter label {

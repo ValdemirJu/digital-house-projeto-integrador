@@ -412,4 +412,29 @@ footer span {
     min-width: 11rem;
     height: auto;
   }
+
+  .container {
+    display: contents;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+  }
+
+  .filter {
+    width: 90%;
+    height: auto;
+    margin: 1rem;
+  }
+  
+  .result img {
+    border-radius: 0.4rem;
+    margin-bottom: 2rem;
+    width: 90%;
+    height: auto;
+  }
+
+  .result p {
+    margin-bottom: 8rem;
+  }
+
 }

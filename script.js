@@ -19,26 +19,38 @@ const typeSelector = document.getElementById('type');
 const brandSelector = document.getElementById('brand');
 const modelSelector = document.getElementById('model');
 const yearSelector = document.getElementById('year');
-const divImageSelector = document.getElementById('resultado-image');
+const divImageSelector = document.getElementById('image-result')
+const pValue = document.getElementById('value-result')
 
 
 typeSelector.addEventListener('change', Event => {
 	brandSelector.innerHTML = '<option value="*">Selecionar</option>';
 	modelSelector.innerHTML = '<option value="*">Selecionar</option>';
 	yearSelector.innerHTML = '<option value="*">Selecionar</option>';
+	changeValue(true);
+	updateImage(true);
 	changeType();
 });
 
 brandSelector.addEventListener('change', Event => {
 	modelSelector.innerHTML = '<option value="*">Selecionar</option>';
 	yearSelector.innerHTML = '<option value="*">Selecionar</option>';
+	changeValue(true);
+	updateImage(true);	
 	changeBrand();
 });
 
 modelSelector.addEventListener('change', Event => {
 	yearSelector.innerHTML = '<option value="*">Selecionar</option>';
+	changeValue(true);
+	updateImage(true);	
 	changeModel();
 });
+
+yearSelector.addEventListener('change', Event => {
+	updateImage();
+	changeValue();
+})
 
 function changeType() {
 	let option = typeSelector.options[typeSelector.selectedIndex];
@@ -82,9 +94,29 @@ function changeModel() {
 	model = option.value;
 	modelText = option.text;
 	updateYear(model)
-	updateImage()
 }
 
+function changeValue(setDefault = false) {
+
+	if (setDefault) {
+		pValue.innerText = '';
+	}
+
+	if (year != '*') {
+
+		console.log('URL Value:', `https://parallelum.com.br/fipe/api/v1/${type}/marcas/${brand}/modelos/${model}/anos/${year.codigo}`);
+
+		fetch(`https://parallelum.com.br/fipe/api/v1/${type}/marcas/${brand}/modelos/${model}/anos/${year.codigo}`)
+		.then(function (response) {
+			return response.json();
+		}).then(function (obj) {
+			if (obj.Valor != '' || obj.Valor != null) {
+				pValue.innerHTML = `<strong>${obj.Valor}</strong>`;
+			}
+		})	
+	}
+}
+ 
 function updateYear(model) {
 	if (model !== '*') {
 		fetch(`https://parallelum.com.br/fipe/api/v1/${type}/marcas/${brand}/modelos/${model}/anos`)
@@ -92,20 +124,22 @@ function updateYear(model) {
 			.then(response => {
 				for (year of response) {
 					yearSelector.innerHTML += `<option value="${year.codigo}">${year.nome}</option>`;
-					console.log();
 				}
 			})
 	}
 }
 
 
-function updateImage() {
+function updateImage(setDefault = false) {
 	let urlImage = ''
 	let url = `https://customsearch.googleapis.com/customsearch/v1?cx=${searchEngineId}&num=1&q=${type}%20${brandText}%20${modelText}%20${yearText}&searchType=image&key=${apiKey}`
 	let urlLogo = `https://customsearch.googleapis.com/customsearch/v1?cx=${searchEngineId}&num=1&q=${type}%20logomarca%20${brandText}&searchType=image&key=${apiKey}`
 
+	if (setDefault) {
+		divImageSelector.innerHTML = '<img src="https://www.quoteinspector.com/media/car-insurance/car-wallet-md.jpg" alt="Carro">'
+		return
+	}
 	
-
 	if (type !== '*' && marca !== '*') {
 
 		if (model == '' || model == null || model == '*') {
@@ -117,8 +151,7 @@ function updateImage() {
 		fetch(url).then(function (response) {
 			return response.json();
 		}).then(function (obj) {
-			console.log('obj.items:', obj.items);
-			divImageSelector.innerHTML = `<img src="${obj.items[0].link}" alt="${obj.items[0].title}">`
+			divImageSelector.innerHTML = '<img src="' + obj.items[0].link + '" alt="' + obj.items[0].title + '">'
 		})
 	}
 
