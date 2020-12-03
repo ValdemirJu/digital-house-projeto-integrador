@@ -1,0 +1,156 @@
+.section-sobrenos {
+  /* border: 1px solid tomato; */
+  width: 80%;
+  max-width: 1200px;
+  margin: 16px auto;
+  padding: 10px 50px 100px 50px;
+  overflow: hidden;
+}
+
+.section-sobrenos h1 {
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 1.2px;
+  padding-bottom: 16px;
+  color: #393e46;
+}
+
+.section-sobrenos h2 {
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 1.2px;
+  color: #393e46;
+  padding: 10px 0;
+}
+
+#equipe-consulta-fipe {
+  text-align: center;
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  color: black;
+  letter-spacing: 1.2px;
+}
+
+.section-sobrenos {
+  font-size: 16px;
+  letter-spacing: 1.2px;
+  text-align: justify;
+}
+
+.div-colaboradores {
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  /* border: 1px solid  purple; */
+}
+
+.foto-esq {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.div-colaboradores img {
+  border-radius: 50%;
+  border: 5px solid #ffd369;
+}
+
+.div-colaboradores h3 {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  color: #ffd369;
+}
+
+.div-colaboradores div {
+  margin: 0 30px;
+  /* border: 1px solid red; */
+}
+
+.div-colaboradores .div-redes-sociais {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.div-colaboradores .redes-sociais-logo {
+  border: 0;
+  border-radius: 0;
+}
+
+@media (max-width: 768px) {
+
+  .section-sobrenos{
+    padding: 20px 0 100px 0;
+  }
+
+  .section-sobrenos h1,
+  .section-sobrenos h2 {
+    text-align: center;
+  }
+
+  .section-sobrenos .div-colaboradores {
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .section-sobrenos .div-colaboradores .image-perfil {
+    order: -1;
+    margin-bottom: 10px;
+  }
+
+  .section-sobrenos .div-colaboradores h3 {
+    text-align: center;
+  }
+  .section-sobrenos .div-colaboradores p {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 500px) {
+
+  .section-sobrenos{
+    padding: 20px 0 100px 0;
+  }
+
+  .section-sobrenos h1 {
+    font-size: 20px;
+    letter-spacing: 1.2px;
+    padding-bottom: 10px;
+  }
+
+  .section-sobrenos h2 {
+    font-size: 16px;
+    letter-spacing: 1.2px;
+  }
+
+  #equipe-consulta-fipe {
+    font-size: 16px;
+  }
+
+  .section-sobrenos {
+    font-size: 14px;
+    letter-spacing: 1.2px;
+    text-align: justify;
+  }
+
+  .div-colaboradores img {
+    width: 100px;
+    border-radius: 50%;
+    border: 3px solid #ffd369;
+  }
+
+  .div-colaboradores .redes-sociais-logo {
+    width: 40px;
+  }
+
+  #equipe-consulta-fipe {
+    text-align: justify;
+  }
+}

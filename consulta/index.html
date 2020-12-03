@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">  
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="../global.css">
+	<title>Consulta Fipe | Consulta</title>
+</head>
+<body>
+	<header>
+    <header>
+      <div class="header">
+        <img class="logo" src="../images/LogoResponsivo2.png" alt="Logo da Página" >
+        
+        <ul class="header-buttons">
+          <li>
+            <a href="../index.html">
+              <button class="button">
+                <img src="../images/home_s.svg" alt=""/>
+                <p>home</p>
+              </button>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <button class="button">
+                <img src="../images/search-alt.svg" alt=""/>
+                <p>consulta</p>
+              </button>
+            </a>
+          </li>
+          <li>
+              <a href="../sobrenos">
+                <button class="button">
+                  <img src="../images/user-square.svg" alt=""/>
+                  <p>sobre nós</p>
+                </button>
+              </a>
+          </li>
+          <li>
+            <a href="../contato">
+              <button class="button">
+                <img src="../images/at.svg" alt=""/>
+                <p>contato</p>
+              </button>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </header>
+  </header>
+
+  <section class="section-consulta">
+    <h1 class="title">Consulte o valor de um veículo</h1>
+    <div class="container">
+      <section class="filter">
+        <label for="type">Tipo de Veículo</label>
+        <select name="type" id="type" class="selector">
+          <option value="*">Selecionar</option>
+          <option value="carros">Carros</option>
+          <option value="motos">Motos</option>
+          <option value="caminhoes">Caminhões</option>
+        </select>
+      
+        <label for="brand">Marca do Veículo</label>
+        <select name="brand" id="brand" class="selector">
+          <option value="*">Selecionar</option>
+        </select>
+      
+        <label for="model">Modelo do Veículo</label>
+        <select name="model" id="model" class="selector">
+          <option value="*">Selecionar</option>
+        </select>
+      
+        <label for="year">Ano do Veículo</label>
+        <select name="year" id="year" class="selector">
+          <option value="*">Selecionar</option>
+        </select>
+  
+        <div class="show-result">
+          <h3 id="marca" for="marca"><strong>Marca:</strong></h3>
+          <h3 id="modelo" for="modelo"><strong>Modelo:</strong></h3>
+          <h3 id="ano" for="ano"><strong>Ano:</strong></h3>
+          <h3 id="combustivel" for="combustivel"><strong>Combustível:</strong></h3>
+          <h3 id="valor" for="valor"><strong>Valor:</strong></h3>
+        </div>
+      </section>
+    
+      <section class="result">
+        <span  id="image-result">
+          <img src="https://www.quoteinspector.com/media/car-insurance/car-wallet-md.jpg" alt="Carro">
+        </span>
+        <p id="value-result"></p>
+      </section>
+    </div>
+  </section>
+  
+	
+	<footer class="footer">
+		<span>
+				Copyright - Projeto Integrados - Digital House
+		</span>    
+		<div class="social-media">
+				<a href="#">
+						<img src="../images/facebook.svg" alt="">
+				</a>
+				<a href="#">
+						<img src="../images/instagram.svg" alt="">
+				</a>
+				<a href="#">
+						<img src="../images/twitter-alt.svg" alt="">
+				</a>
+				<a href="#">
+						<img src="../images/github.svg" alt="">
+				</a>
+		</div>
+	</footer>
+
+	<script src="../script.js"></script>
+</body>
+</html>

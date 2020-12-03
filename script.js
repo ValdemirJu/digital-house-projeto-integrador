@@ -1,7 +1,14 @@
-let apiType = '';
-let apiBrand = '';
-let apiModel = '';
-let apiYear = '';
+const apiKey = "AIzaSyAS9jUgMZt6tH5tou2dqmPG55ZmCL7zlaQ";
+const searchEngineId = "e4d45dc475a45a226";
+let type = '';
+let brand = '';
+let brandText = '';
+let model = '';
+let modelText = '';
+let year = '';
+let yearText = '';
+let result = '';
+
 
 let infoBrand = document.getElementById('infoBrand');
 let infoModel = document.getElementById('infoModel');
@@ -9,10 +16,12 @@ let infoYear = document.getElementById('infoYear');
 let infoFuel = document.getElementById('infoFuel');
 let infoValue = document.getElementById('infoValue');
 
-let typeSelector = document.getElementById('apiType');
-let brandSelector = document.getElementById('apiBrand');
-let modelSelector = document.getElementById('apiModel');
-let yearSelector = document.getElementById('apiYear');
+const typeSelector = document.getElementById('type');
+const brandSelector = document.getElementById('brand');
+const modelSelector = document.getElementById('model');
+const yearSelector = document.getElementById('year');
+const divImageSelector = document.getElementById('image-result')
+const pValue = document.getElementById('value-result')
 
 function resetInfos() {
 	infoBrand.innerHTML = '<strong>Marca:</strong>';
@@ -26,6 +35,8 @@ typeSelector.addEventListener('change', Event => {
 	brandSelector.innerHTML = '<option value="*">Selecionar</option>';
 	modelSelector.innerHTML = '<option value="*">Selecionar</option>';
 	yearSelector.innerHTML = '<option value="*">Selecionar</option>';
+	changeValue(true);
+	updateImage(true);
 	changeType();
 	resetInfos();
 });
@@ -33,12 +44,16 @@ typeSelector.addEventListener('change', Event => {
 brandSelector.addEventListener('change', Event => {
 	modelSelector.innerHTML = '<option value="*">Selecionar</option>';
 	yearSelector.innerHTML = '<option value="*">Selecionar</option>';
+	changeValue(true);
+	updateImage(true);	
 	changeBrand();
 	resetInfos();
 });
 
 modelSelector.addEventListener('change', Event => {
 	yearSelector.innerHTML = '<option value="*">Selecionar</option>';
+	changeValue(true);
+	updateImage(true);	
 	changeModel();
 	resetInfos();
 });
@@ -48,11 +63,16 @@ yearSelector.addEventListener('change', Event => {
 	resetInfos();
 });
 
+yearSelector.addEventListener('change', Event => {
+	updateImage();
+	changeValue();
+})
+
 function changeType() {
 	let option = typeSelector.options[typeSelector.selectedIndex];
-
-	apiType = option.value;
-	updateBrands(apiType)
+  
+	type = option.value;
+	updateBrands(type)
 }
 
 function updateBrands(type) {
@@ -70,8 +90,9 @@ function updateBrands(type) {
 function changeBrand() {
 	let option = brandSelector.options[brandSelector.selectedIndex];
 
-	apiBrand = option.value;
-	updateModels(apiBrand)
+	brand = option.value;
+	brandText = option.text;
+	updateModels(brand)
 }
 
 function updateModels(brand) {
@@ -88,11 +109,33 @@ function updateModels(brand) {
 
 function changeModel() {
 	let option = modelSelector.options[modelSelector.selectedIndex];
-
-	apiModel = option.value;
-	updateYear(apiModel)
+  
+	model = option.value;
+	modelText = option.text;
+	updateYear(model)
 }
 
+function changeValue(setDefault = false) {
+
+	if (setDefault) {
+		pValue.innerText = '';
+	}
+
+	if (year != '*') {
+
+		console.log('URL Value:', `https://parallelum.com.br/fipe/api/v1/${type}/marcas/${brand}/modelos/${model}/anos/${year.codigo}`);
+
+		fetch(`https://parallelum.com.br/fipe/api/v1/${type}/marcas/${brand}/modelos/${model}/anos/${year.codigo}`)
+		.then(function (response) {
+			return response.json();
+		}).then(function (obj) {
+			if (obj.Valor != '' || obj.Valor != null) {
+				pValue.innerHTML = `<strong>${obj.Valor}</strong>`;
+			}
+		})	
+	}
+}
+ 
 function updateYear(model) {
 	if (model !== '*') {
 		fetch(`https://parallelum.com.br/fipe/api/v1/${apiType}/marcas/${apiBrand}/modelos/${apiModel}/anos`)
@@ -105,24 +148,28 @@ function updateYear(model) {
 	}
 }
 
-function changeYear() {
-	let option = yearSelector.options[yearSelector.selectedIndex];
+function updateImage(setDefault = false) {
+	let urlImage = ''
+	let url = `https://customsearch.googleapis.com/customsearch/v1?cx=${searchEngineId}&num=1&q=${type}%20${brandText}%20${modelText}%20${yearText}&searchType=image&key=${apiKey}`
+	let urlLogo = `https://customsearch.googleapis.com/customsearch/v1?cx=${searchEngineId}&num=1&q=${type}%20logomarca%20${brandText}&searchType=image&key=${apiKey}`
 
-	apiYear = option.value;
-	updateInfos(apiYear)
-}
+	if (setDefault) {
+		divImageSelector.innerHTML = '<img src="https://www.quoteinspector.com/media/car-insurance/car-wallet-md.jpg" alt="Carro">'
+		return
+	}
+	
+	if (type !== '*' && marca !== '*') {
 
-function updateInfos(year) {
-	if (year !== '*') {
-		fetch(`https://parallelum.com.br/fipe/api/v1/${apiType}/marcas/${apiBrand}/modelos/${apiModel}/anos/${apiYear}`)
-			.then(response => response.json())
-			.then(response => {
-				console.log(response);
-				infoBrand.innerHTML = `<strong>Marca: </strong>${response.Marca}`;
-				infoModel.innerHTML = `<strong>Modelo: </strong>${response.Modelo}`;
-				infoYear.innerHTML = `<strong>Ano: </strong>${response.AnoModelo}`;
-				infoFuel.innerHTML = `<strong>Combustível: </strong>${response.Combustivel}`;
-				infoValue.innerHTML = `<strong>Valor: </strong>${response.Valor}`;
-			})
+		if (model == '' || model == null || model == '*') {
+			url = urlLogo // Irá buscar apenas a logo da marca
+		}
+
+		console.log('URL:', url);
+
+		fetch(url).then(function (response) {
+			return response.json();
+		}).then(function (obj) {
+			divImageSelector.innerHTML = '<img src="' + obj.items[0].link + '" alt="' + obj.items[0].title + '">'
+		})
 	}
 }
