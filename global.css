@@ -234,7 +234,7 @@ footer span {
 }
 
 .button {
-  width: 12rem;
+  width: 11rem;
   height: 3.5rem;
   font-size: 0.9rem;
   font-family: 'Roboto', sans-serif;
@@ -355,7 +355,7 @@ footer span {
 }
 
 /* ------------------------ Tela ao chegar Width = 768px ------------------------*/
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   body {
     font-size: 14px;
   }
@@ -391,7 +391,7 @@ footer span {
   }
 
   .button {
-    width: 16vw;
+    width: 14vw;
     height: auto;
     margin: 0.5rem 1rem;
   }
