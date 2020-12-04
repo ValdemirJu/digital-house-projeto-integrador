@@ -129,7 +129,10 @@ table {
 /* Formatação do Body */
 body {
   font-family: 'Roboto', sans-serif;
-  max-width: 100%;
+  padding: 0;
+  background-image: url('./images/background/background-image3.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 a {
@@ -138,12 +141,6 @@ a {
 }
 
 /* Formatação do Header */
-
-header {
-  /* border: 1px solid tomato; */
-  padding: 10px 0;
-  background-color: #222831;
-}
 
 input,
 button,
@@ -210,11 +207,33 @@ footer span {
   width: 100%;
   margin: 0 auto;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+}
+
+.header .logo {
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  background-color: #1b1e24;
+  width: 100%;
+  height: 4rem;
+}
+
+.header .menu {
+  margin-top: 1rem;
+}
+
+.header .logo img {
+  background-color: transparent;
+  align-self: center;
+  height: 3rem;
+  margin-top: 0.5rem;
 }
 
 .logo {
-  width: 16rem;
+  width: 8rem;
   /* border: 1px solid pink; */
 }
 
@@ -233,28 +252,84 @@ footer span {
   display: none;
 }
 
-.button {
+.btn {
   width: 11rem;
   height: 3.5rem;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-family: 'Roboto', sans-serif;
   text-transform: uppercase;
   font-weight: 500;
-  color: #fff;
-  border-radius: 10rem;
-  background-color: #393e46;
+  color: #eee;
+
+  border-radius: 0.25rem;
+  background-color: #222831;
   transition-duration: 450ms;
 }
 
-.button:hover {
+.btn:hover {
   background-color: #ffd369;
   color: #393e46;
   transition-duration: 400ms;
   cursor: pointer;
-  box-shadow: #393e4611 0.2rem 0.3rem 0.2rem 0.15rem;
+  box-shadow: #393e468a 0rem 0rem 1.2rem 0.1rem;
 }
 
-.button:active {
+.btn:active {
+  background-color: #ffd269d8;
+}
+
+.btn-menu {
+  width: 11rem;
+  height: 3.5rem;
+  text-decoration: overline;
+  font-size: 1.2rem;
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #222831;
+
+  border-radius: 0.25rem;
+  /* background-color: #222831; */
+  background-color: transparent;
+  transition-duration: 450ms;
+}
+
+.btn-menu:hover {
+  background-color: #ffd369;
+  color: #393e46;
+  text-decoration: none;
+  transition-duration: 400ms;
+  cursor: pointer;
+  box-shadow: #393e468a 0rem 0rem 1.2rem 0.1rem;
+}
+
+.btn-menu:active {
+  background-color: #ffd269d8;
+}
+
+.btn-wide {
+  width: 40rem;
+  height: 3.5rem;
+  font-size: 1rem;
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #eee;
+
+  border-radius: 0.25rem;
+  background-color: #222831;
+  transition-duration: 450ms;
+}
+
+.btn-wide:hover {
+  background-color: #ffd369;
+  color: #393e46;
+  transition-duration: 400ms;
+  cursor: pointer;
+  box-shadow: #393e46aa 0rem 0rem 1.2rem 0.1rem;
+}
+
+.btn-wide:active {
   background-color: #ffd269d8;
 }
 /*  Button (END) */
@@ -264,23 +339,29 @@ footer span {
 .title {
   font-size: 2.5rem;
   font-weight: 500;
-  color:   #393e46;
+  color: #393e46;
   padding: 0 16px;
 }
 
-.title-h2{
-  font-size: 1.5rem;
+.title-h2 {
+  font-size: 1.4rem;
   font-weight: 500;
-  color:    #ffd369;
+  color: #f0bc45;
   padding: 0 16px;
   text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
 }
 
 .presentation {
   /* border: 1px solid red; */
   margin: 3rem auto;
+  padding: 2rem;
+  padding-bottom: 0.5rem;
   width: 80%;
   max-width: 1200px;
+  background-color: #fffffff5;
 }
 
 .text {
@@ -305,12 +386,12 @@ footer span {
 
 .text img {
   float: right;
-  width: 350px;
+  width: 20rem;
   margin-left: 15px;
-  border-radius: 20px;
+  border-radius: 0.25rem;
 }
 
-#texto-referencia{
+.texto-referencia {
   font-size: 0.7rem;
   text-align: center;
   color: #393e46;
@@ -320,12 +401,6 @@ footer span {
   display: flex;
   align-content: center;
   justify-content: center;
-}
-
-.search button {
-  height: 4rem;
-  width: 15rem;
-  margin: 1rem 0 3rem 0;
 }
 /* Estilização da página HOME (END) */
 
@@ -365,9 +440,9 @@ footer span {
     margin: 1rem auto;
   }
 
-  .title{
+  .title {
     text-align: center;
-    font-size: 2.0rem;
+    font-size: 2rem;
   }
 
   .text div {
@@ -376,7 +451,6 @@ footer span {
     justify-content: center;
     align-items: center;
   }
-
 
   .text img {
     float: none;
@@ -462,12 +536,12 @@ footer span {
     margin: 1rem;
   }
 
-  .title{
+  .title {
     font-size: 1.5rem;
   }
 
-  .title-h2{
-    font-size: 1.0rem;
+  .title-h2 {
+    font-size: 1rem;
   }
 
   .search button {
@@ -475,10 +549,9 @@ footer span {
     width: 12rem;
     margin: 1rem 0 3rem 0;
   }
-
 }
 
-@media(max-width:500px){
+@media (max-width: 500px) {
   .text img {
     float: none;
     width: 90%;
@@ -486,11 +559,11 @@ footer span {
     border-radius: 20px;
   }
 
-  .title{
+  .title {
     font-size: 1.4rem;
   }
 
-  .title-h2{
+  .title-h2 {
     font-size: 0.8rem;
   }
 }
