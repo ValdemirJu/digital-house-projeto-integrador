@@ -10,11 +10,11 @@ let yearText = '';
 let result = '';
 
 
-let infoBrand = document.getElementById('infoBrand');
-let infoModel = document.getElementById('infoModel');
-let infoYear = document.getElementById('infoYear');
-let infoFuel = document.getElementById('infoFuel');
-let infoValue = document.getElementById('infoValue');
+let marca = document.getElementById('marca');
+let modelo = document.getElementById('modelo');
+let ano = document.getElementById('ano');
+let combustivel = document.getElementById('combustivel');
+let valor = document.getElementById('valor');
 
 const typeSelector = document.getElementById('type');
 const brandSelector = document.getElementById('brand');
@@ -24,11 +24,11 @@ const divImageSelector = document.getElementById('image-result')
 const pValue = document.getElementById('value-result')
 
 function resetInfos() {
-	infoBrand.innerHTML = '<strong>Marca:</strong>';
-	infoModel.innerHTML = '<strong>Modelo:</strong>';
-	infoYear.innerHTML = '<strong>Ano:</strong>';
-	infoFuel.innerHTML = '<strong>Combustível:</strong>';
-	infoValue.innerHTML = '<strong>Valor:</strong>';
+	marca.innerHTML = '<strong>Marca:</strong>';
+	modelo.innerHTML = '<strong>Modelo:</strong>';
+	ano.innerHTML = '<strong>Ano:</strong>';
+	combustivel.innerHTML = '<strong>Combustível:</strong>';
+	valor.innerHTML = '<strong>Valor:</strong>';
 }
 
 typeSelector.addEventListener('change', Event => {
@@ -55,32 +55,27 @@ modelSelector.addEventListener('change', Event => {
 	changeValue(true);
 	updateImage(true);	
 	changeModel();
-	resetInfos();
-});
-
-yearSelector.addEventListener('change', Event => {
-	changeYear();
-	resetInfos();
+	resetInfos
 });
 
 yearSelector.addEventListener('change', Event => {
 	updateImage();
 	changeValue();
-})
+	resetInfos();
+});
 
 function changeType() {
 	let option = typeSelector.options[typeSelector.selectedIndex];
-  
 	type = option.value;
 	updateBrands(type)
 }
 
 function updateBrands(type) {
 	if (type !== '*') {
-		fetch(`https://parallelum.com.br/fipe/api/v1/${apiType}/marcas`)
+		fetch(`https://parallelum.com.br/fipe/api/v1/${type}/marcas`)
 			.then(response => response.json())
 			.then(response => {
-				for (let brand of response) {
+				for (brand of response) {
 					brandSelector.innerHTML += `<option value="${brand.codigo}">${brand.nome}</option>`;
 				}
 			})
@@ -89,7 +84,6 @@ function updateBrands(type) {
 
 function changeBrand() {
 	let option = brandSelector.options[brandSelector.selectedIndex];
-
 	brand = option.value;
 	brandText = option.text;
 	updateModels(brand)
@@ -97,10 +91,10 @@ function changeBrand() {
 
 function updateModels(brand) {
 	if (brand !== '*') {
-		fetch(`https://parallelum.com.br/fipe/api/v1/${apiType}/marcas/${apiBrand}/modelos`)
+		fetch(`https://parallelum.com.br/fipe/api/v1/${type}/marcas/${brand}/modelos`)
 			.then(response => response.json())
 			.then(({ modelos }) => {
-				for (let model of modelos) {
+				for (model of modelos) {
 					modelSelector.innerHTML += `<option value="${model.codigo}">${model.nome}</option>`;
 				}
 			})
@@ -109,7 +103,6 @@ function updateModels(brand) {
 
 function changeModel() {
 	let option = modelSelector.options[modelSelector.selectedIndex];
-  
 	model = option.value;
 	modelText = option.text;
 	updateYear(model)
@@ -119,6 +112,7 @@ function changeValue(setDefault = false) {
 
 	if (setDefault) {
 		pValue.innerText = '';
+		return
 	}
 
 	if (year != '*') {
@@ -138,10 +132,10 @@ function changeValue(setDefault = false) {
  
 function updateYear(model) {
 	if (model !== '*') {
-		fetch(`https://parallelum.com.br/fipe/api/v1/${apiType}/marcas/${apiBrand}/modelos/${apiModel}/anos`)
+		fetch(`https://parallelum.com.br/fipe/api/v1/${type}/marcas/${brand}/modelos/${model}/anos`)
 			.then(response => response.json())
 			.then(response => {
-				for (let year of response) {
+				for (year of response) {
 					yearSelector.innerHTML += `<option value="${year.codigo}">${year.nome}</option>`;
 				}
 			})
@@ -172,4 +166,5 @@ function updateImage(setDefault = false) {
 			divImageSelector.innerHTML = '<img src="' + obj.items[0].link + '" alt="' + obj.items[0].title + '">'
 		})
 	}
+
 }
