@@ -9,11 +9,15 @@ let year = '';
 let yearText = '';
 let result = '';
 
+
 let marca = document.getElementById('marca');
 let modelo = document.getElementById('modelo');
 let ano = document.getElementById('ano');
 let combustivel = document.getElementById('combustivel');
 let valor = document.getElementById('valor');
+let btnConsultar = document.getElementById('button-consultar');
+let divResult = document.getElementById('div-result');
+let btnNovaConsulta = document.getElementById('btn-nova-consulta');
 
 const typeSelector = document.getElementById('type');
 const brandSelector = document.getElementById('brand');
@@ -22,6 +26,13 @@ const yearSelector = document.getElementById('year');
 const divImageSelector = document.getElementById('image-result')
 const pValue = document.getElementById('value-result')
 
+function resetInfos() {
+	marca.innerHTML = '<strong>Marca:</strong>';
+	modelo.innerHTML = '<strong>Modelo:</strong>';
+	ano.innerHTML = '<strong>Ano:</strong>';
+	combustivel.innerHTML = '<strong>Combustível:</strong>';
+	valor.innerHTML = '<strong>Valor:</strong>';
+}
 
 typeSelector.addEventListener('change', Event => {
 	brandSelector.innerHTML = '<option value="*">Selecionar</option>';
@@ -30,6 +41,7 @@ typeSelector.addEventListener('change', Event => {
 	changeValue(true);
 	updateImage(true);
 	changeType();
+	resetInfos();
 });
 
 brandSelector.addEventListener('change', Event => {
@@ -38,6 +50,7 @@ brandSelector.addEventListener('change', Event => {
 	changeValue(true);
 	updateImage(true);	
 	changeBrand();
+	resetInfos();
 });
 
 modelSelector.addEventListener('change', Event => {
@@ -45,12 +58,22 @@ modelSelector.addEventListener('change', Event => {
 	changeValue(true);
 	updateImage(true);	
 	changeModel();
+	resetInfos
 });
 
 yearSelector.addEventListener('change', Event => {
+	btnConsultar.style.visibility = 'visible';
+});
+
+btnConsultar.addEventListener('click', Event => {
 	updateImage();
 	changeValue();
-})
+	divResult.style.visibility = 'visible';
+});
+
+btnNovaConsulta.addEventListener('click', Event => {
+	location.reload();
+});
 
 function changeType() {
 	let option = typeSelector.options[typeSelector.selectedIndex];
@@ -129,7 +152,6 @@ function updateYear(model) {
 			})
 	}
 }
-
 
 function updateImage(setDefault = false) {
 	let urlImage = ''

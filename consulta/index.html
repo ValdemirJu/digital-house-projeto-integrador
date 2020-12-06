@@ -53,7 +53,59 @@
   </header>
 
   <section class="section-consulta">
-    <h1 class="title">Consulte o valor de um veículo</h1>
+    <h1 class="title-consulta">Consulte o valor de um veículo</h1>
+
+    <div class="div-filter">
+        <div class="separar-label-select" id="div-type">
+          <label for="type">Tipo de Veículo</label>
+          <select name="type" id="type" class="selector">
+            <option value="*">Selecionar</option>
+            <option value="carros">Carros</option>
+            <option value="motos">Motos</option>
+            <option value="caminhoes">Caminhões</option>
+          </select>
+        </div>
+
+        <div class="separar-label-select" id="div-brand">
+            <label for="brand">Marca do Veículo</label>
+            <select name="brand" id="brand" class="selector">
+              <option value="*">Selecionar</option>
+            </select>
+        </div>
+
+        <div class="separar-label-select" id="div-model">
+          <label for="model">Modelo do Veículo</label>
+          <select name="model" id="model" class="selector">
+            <option value="*">Selecionar</option>
+          </select>
+        </div>
+
+        <div class="separar-label-select" id="div-year">
+          <label for="year">Ano do Veículo</label>
+          <select name="year" id="year" class="selector">
+            <option value="*">Selecionar</option>
+          </select>
+        </div>
+
+        <div class="search">
+              <button id="button-consultar"  class="button hidden">consultar</button>
+        </div>
+    </div>
+
+    <div id="div-result" class="div-result hidden">
+        <img id="image-result" src="../images/LogoResponsivo2.png" alt="Carro">
+      <!-- <p id="value-result">R$ 20.000,00</p> -->
+      <div class="show-result">
+        <h3 id="marca" for="marca"><strong>Marca:</strong></h3>
+        <h3 id="modelo" for="modelo"><strong>Modelo:</strong></h3>
+        <h3 id="ano" for="ano"><strong>Ano:</strong></h3>
+        <h3 id="combustivel" for="combustivel"><strong>Combustível:</strong></h3>
+        <h3 id="value-result" for="valor"><strong>Valor:</strong></h3>
+      </div> 
+      <button id="btn-nova-consulta" class="button">Nova Consulta</button>
+    </div>
+
+    <!-- <h1 class="title">Consulte o valor de um veículo</h1>
     <div class="container">
       <section class="filter">
         <label for="type">Tipo de Veículo</label>
@@ -94,7 +146,7 @@
         </span>
         <p id="value-result"></p>
       </section>
-    </div>
+    </div> -->
   </section>
   
 	
