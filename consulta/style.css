@@ -61,7 +61,7 @@ select{
   flex-direction: column;
 }
 
-.div-result{
+.div-result {
     width: 100%;
     height: 100%;
     margin: 16px;
@@ -70,7 +70,6 @@ select{
     position: absolute;
     top: 0px;
     align-self: center;
-    /* z-index: 100; */
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -80,19 +79,27 @@ select{
 
 .div-result img{
   width: 80%;
+  height: auto;
+  background-color: #393e46;
+  opacity: 0.7;
+  transition-duration: 450ms;
+  border-radius: 1rem;
 }
 
 .div-result .show-result{
   margin-top: 20px;
   align-self: flex-start;
   color: white;
-  font-size: 20px;
+  font-size: 1em;
   font-weight: 500;
+  background-color: #393e46;
+  opacity: 0.7;
+  transition-duration: 450ms;
+  border-radius: 1rem;
 }
 
-.div-result .show-result h3{
+.div-result .show-result h3 {
   padding: 5px;
-  text-transform: uppercase;
 }
 
 .hidden{

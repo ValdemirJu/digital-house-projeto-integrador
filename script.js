@@ -14,7 +14,7 @@ let marca = document.getElementById('marca');
 let modelo = document.getElementById('modelo');
 let ano = document.getElementById('ano');
 let combustivel = document.getElementById('combustivel');
-let valor = document.getElementById('valor');
+let valor = document.getElementById('value-result');
 let btnConsultar = document.getElementById('button-consultar');
 let divResult = document.getElementById('div-result');
 let btnNovaConsulta = document.getElementById('btn-nova-consulta');
@@ -24,14 +24,13 @@ const brandSelector = document.getElementById('brand');
 const modelSelector = document.getElementById('model');
 const yearSelector = document.getElementById('year');
 const divImageSelector = document.getElementById('image-result')
-const pValue = document.getElementById('value-result')
 
 function resetInfos() {
-	marca.innerHTML = '<strong>Marca:</strong>';
-	modelo.innerHTML = '<strong>Modelo:</strong>';
-	ano.innerHTML = '<strong>Ano:</strong>';
-	combustivel.innerHTML = '<strong>Combustível:</strong>';
-	valor.innerHTML = '<strong>Valor:</strong>';
+	marca.innerHTML = '<b>Marca: </b>';
+	modelo.innerHTML = '<b>Modelo: </b>';
+	ano.innerHTML = '<b>Ano: </b>';
+	combustivel.innerHTML = '<b>Combustível: </b>';
+	valor.innerHTML = '<b>Valor: </b>';
 }
 
 typeSelector.addEventListener('change', Event => {
@@ -122,7 +121,11 @@ function changeModel() {
 function changeValue(setDefault = false) {
 
 	if (setDefault) {
-		pValue.innerText = '';
+		marca.innerHTML = '';
+		modelo.innerHTML = '';
+		ano.innerHTML = '';
+		combustivel.innerHTML = '';
+		valor.innerText = '';
 		return
 	}
 
@@ -135,7 +138,11 @@ function changeValue(setDefault = false) {
 			return response.json();
 		}).then(function (obj) {
 			if (obj.Valor != '' || obj.Valor != null) {
-				pValue.innerHTML = `<strong>${obj.Valor}</strong>`;
+				marca.innerHTML = `<b>Marca: <b>${obj.Marca}`;
+				modelo.innerHTML = `<b>Modelo: <b>${obj.Modelo}`;
+				ano.innerHTML = `<b>Ano: <b>${obj.AnoModelo}`;
+				combustivel.innerHTML = `<b>Combustível: <b>${obj.Combustivel}`;
+				valor.innerHTML = `<b>Valor: <b>${obj.Valor}`;
 			}
 		})	
 	}
@@ -174,7 +181,12 @@ function updateImage(setDefault = false) {
 		fetch(url).then(function (response) {
 			return response.json();
 		}).then(function (obj) {
-			divImageSelector.innerHTML = '<img src="' + obj.items[0].link + '" alt="' + obj.items[0].title + '">'
+			//divImageSelector.innerHTML = '<img src="' + obj.items[0].link + '" alt="' + obj.items[0].title + '">'
+			divResult.style.backgroundImage = "url('" + obj.items[0].link + "')";
+			divResult.style.backgroundRepeat = "no-repeat";
+			divResult.style.backgroundSize = "100%";
+			divResult.style.backgroundPosition = "center";
+			divResult.style.transitionDuration = "450ms";
 		})
 	}
 
