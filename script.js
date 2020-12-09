@@ -23,7 +23,7 @@ const typeSelector = document.getElementById('type');
 const brandSelector = document.getElementById('brand');
 const modelSelector = document.getElementById('model');
 const yearSelector = document.getElementById('year');
-const divImageSelector = document.getElementById('image-result')
+// const divImageSelector = document.getElementById('image-result')
 
 function resetInfos() {
 	marca.innerHTML = '<b>Marca: </b>';
@@ -138,11 +138,11 @@ function changeValue(setDefault = false) {
 			return response.json();
 		}).then(function (obj) {
 			if (obj.Valor != '' || obj.Valor != null) {
-				marca.innerHTML = `<b>Marca: <b>${obj.Marca}`;
-				modelo.innerHTML = `<b>Modelo: <b>${obj.Modelo}`;
-				ano.innerHTML = `<b>Ano: <b>${obj.AnoModelo}`;
-				combustivel.innerHTML = `<b>Combustível: <b>${obj.Combustivel}`;
-				valor.innerHTML = `<b>Valor: <b>${obj.Valor}`;
+				marca.innerHTML = `<b>Marca: <b><span>${obj.Marca}</span>`;
+				modelo.innerHTML = `<b>Modelo: <b><span>${obj.Modelo}</span>`;
+				ano.innerHTML = `<b>Ano: <b><span>${obj.AnoModelo}</span>`;
+				combustivel.innerHTML = `<b>Combustível: <b><span>${obj.Combustivel}</span>`;
+				valor.innerHTML = `<b>Valor: <b><span>${obj.Valor}</span>`;
 			}
 		})	
 	}
@@ -165,10 +165,10 @@ function updateImage(setDefault = false) {
 	let url = `https://customsearch.googleapis.com/customsearch/v1?cx=${searchEngineId}&num=1&q=${type}%20${brandText}%20${modelText}%20${yearText}&searchType=image&key=${apiKey}`
 	let urlLogo = `https://customsearch.googleapis.com/customsearch/v1?cx=${searchEngineId}&num=1&q=${type}%20logomarca%20${brandText}&searchType=image&key=${apiKey}`
 
-	if (setDefault) {
-		divImageSelector.innerHTML = '<img src="https://www.quoteinspector.com/media/car-insurance/car-wallet-md.jpg" alt="Carro">'
-		return
-	}
+	// if (setDefault) {
+	// 	divImageSelector.innerHTML = '<img src="https://www.quoteinspector.com/media/car-insurance/car-wallet-md.jpg" alt="Carro">'
+	// 	return
+	// }
 	
 	if (type !== '*' && marca !== '*') {
 
@@ -181,10 +181,13 @@ function updateImage(setDefault = false) {
 		fetch(url).then(function (response) {
 			return response.json();
 		}).then(function (obj) {
-			divResult.style.backgroundImage = "url('" + obj.items[0].link + "')";
-			divResult.style.backgroundRepeat = "no-repeat";
-			divResult.style.backgroundSize = "100%";
-			divResult.style.backgroundPosition = "center";
+
+				divResult.style.backgroundImage = "url('" + obj.items[0].link + "')";
+				divResult.style.backgroundRepeat = "no-repeat";
+				// divResult.style.backgroundSize = "cover";
+				divResult.style.backgroundPosition = "center";	
+			
+		
 		})
 	}
 
