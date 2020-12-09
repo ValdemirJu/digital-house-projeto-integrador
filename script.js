@@ -181,12 +181,10 @@ function updateImage(setDefault = false) {
 		fetch(url).then(function (response) {
 			return response.json();
 		}).then(function (obj) {
-			//divImageSelector.innerHTML = '<img src="' + obj.items[0].link + '" alt="' + obj.items[0].title + '">'
 			divResult.style.backgroundImage = "url('" + obj.items[0].link + "')";
 			divResult.style.backgroundRepeat = "no-repeat";
 			divResult.style.backgroundSize = "100%";
 			divResult.style.backgroundPosition = "center";
-			divResult.style.transitionDuration = "450ms";
 		})
 	}
 
