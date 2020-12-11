@@ -16,6 +16,7 @@ select{
   margin: 16px auto 150px auto;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
@@ -112,6 +113,13 @@ select{
 .btn-position{
   position: absolute;
   bottom: 50px;
+}
+
+.gif{
+  position: absolute;
+  top: 70px;
+  z-index: 10;
+  visibility: hidden;
 }
 
 @media(max-width: 768px){

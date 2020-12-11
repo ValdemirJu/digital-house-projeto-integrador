@@ -55,6 +55,8 @@
   <section class="section-consulta">
     <h1 class="title-consulta">Consulte o valor de um veículo</h1>
 
+    <img src="../images/searching.gif" alt="" width="200px" class="gif" id="gif">
+
     <div class="div-filter">
         <div class="separar-label-select" id="div-type">
           <label for="type">Tipo de Veículo</label>
@@ -66,21 +68,21 @@
           </select>
         </div>
 
-        <div class="separar-label-select" id="div-brand">
+        <div class="separar-label-select hidden" id="div-brand">
             <label for="brand">Marca do Veículo</label>
             <select name="brand" id="brand" class="selector">
               <option value="*">Selecionar</option>
             </select>
         </div>
 
-        <div class="separar-label-select" id="div-model">
+        <div class="separar-label-select hidden" id="div-model">
           <label for="model">Modelo do Veículo</label>
           <select name="model" id="model" class="selector">
             <option value="*">Selecionar</option>
           </select>
         </div>
 
-        <div class="separar-label-select" id="div-year">
+        <div class="separar-label-select hidden" id="div-year">
           <label for="year">Ano do Veículo</label>
           <select name="year" id="year" class="selector">
             <option value="*">Selecionar</option>
@@ -93,7 +95,6 @@
     </div>
 
     <div id="div-result" class="div-result hidden">
-        <!-- <img id="image-result" src="../images/LogoResponsivo2.png" alt="Carro"> -->
       <div class="show-result">
         <h3 id="marca" for="marca"><strong>Marca:</strong></h3>
         <h3 id="modelo" for="modelo"><strong>Modelo:</strong></h3>
@@ -104,48 +105,6 @@
       <button id="btn-nova-consulta" class="button btn-position">Nova Consulta</button>
     </div>
 
-    <!-- <h1 class="title">Consulte o valor de um veículo</h1>
-    <div class="container">
-      <section class="filter">
-        <label for="type">Tipo de Veículo</label>
-        <select name="type" id="type" class="selector">
-          <option value="*">Selecionar</option>
-          <option value="carros">Carros</option>
-          <option value="motos">Motos</option>
-          <option value="caminhoes">Caminhões</option>
-        </select>
-      
-        <label for="brand">Marca do Veículo</label>
-        <select name="brand" id="brand" class="selector">
-          <option value="*">Selecionar</option>
-        </select>
-      
-        <label for="model">Modelo do Veículo</label>
-        <select name="model" id="model" class="selector">
-          <option value="*">Selecionar</option>
-        </select>
-      
-        <label for="year">Ano do Veículo</label>
-        <select name="year" id="year" class="selector">
-          <option value="*">Selecionar</option>
-        </select>
-  
-        <div class="show-result">
-          <h3 id="marca" for="marca"><strong>Marca:</strong></h3>
-          <h3 id="modelo" for="modelo"><strong>Modelo:</strong></h3>
-          <h3 id="ano" for="ano"><strong>Ano:</strong></h3>
-          <h3 id="combustivel" for="combustivel"><strong>Combustível:</strong></h3>
-          <h3 id="valor" for="valor"><strong>Valor:</strong></h3>
-        </div>
-      </section>
-    
-      <section class="result">
-        <span  id="image-result">
-          <img src="https://www.quoteinspector.com/media/car-insurance/car-wallet-md.jpg" alt="Carro">
-        </span>
-        <p id="value-result"></p>
-      </section>
-    </div> -->
   </section>
   
 	

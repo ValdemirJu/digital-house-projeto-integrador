@@ -18,12 +18,25 @@ let valor = document.getElementById('value-result');
 let btnConsultar = document.getElementById('button-consultar');
 let divResult = document.getElementById('div-result');
 let btnNovaConsulta = document.getElementById('btn-nova-consulta');
+let gif = document.getElementById('gif');
+
+//Elementos para os seletores irem aparecendo aos poucos:
+let divBrand = document.getElementById("div-brand");
+let divModel = document.getElementById("div-model");
+let divYear = document.getElementById("div-year");
 
 const typeSelector = document.getElementById('type');
 const brandSelector = document.getElementById('brand');
 const modelSelector = document.getElementById('model');
 const yearSelector = document.getElementById('year');
-// const divImageSelector = document.getElementById('image-result')
+
+function elementVisibility(element, param){
+	if(param){
+		element.style.visibility = "visible";
+	}else{
+		element.style.visibility = "hidden";
+	}
+}
 
 function resetInfos() {
 	marca.innerHTML = '<b>Marca: </b>';
@@ -41,6 +54,7 @@ typeSelector.addEventListener('change', Event => {
 	updateImage(true);
 	changeType();
 	resetInfos();
+	elementVisibility(gif, true);
 });
 
 brandSelector.addEventListener('change', Event => {
@@ -50,6 +64,7 @@ brandSelector.addEventListener('change', Event => {
 	updateImage(true);	
 	changeBrand();
 	resetInfos();
+	elementVisibility(gif, true);
 });
 
 modelSelector.addEventListener('change', Event => {
@@ -57,11 +72,13 @@ modelSelector.addEventListener('change', Event => {
 	changeValue(true);
 	updateImage(true);	
 	changeModel();
-	resetInfos
+	resetInfos();
+	elementVisibility(gif, true);
 });
 
 yearSelector.addEventListener('change', Event => {
-	btnConsultar.style.visibility = 'visible';
+	changeYear();
+	elementVisibility(btnConsultar, true);
 });
 
 btnConsultar.addEventListener('click', Event => {
@@ -88,6 +105,8 @@ function updateBrands(type) {
 				for (brand of response) {
 					brandSelector.innerHTML += `<option value="${brand.codigo}">${brand.nome}</option>`;
 				}
+				elementVisibility(gif, false);
+				elementVisibility(divBrand, true);
 			})
 	}
 }
@@ -107,6 +126,8 @@ function updateModels(brand) {
 				for (model of modelos) {
 					modelSelector.innerHTML += `<option value="${model.codigo}">${model.nome}</option>`;
 				}
+				elementVisibility(gif, false);
+				elementVisibility(divModel, true);
 			})
 	}
 }
@@ -116,6 +137,12 @@ function changeModel() {
 	model = option.value;
 	modelText = option.text;
 	updateYear(model)
+}
+
+function changeYear() {
+	let option = yearSelector.options[yearSelector.selectedIndex];
+	year = option.value;
+	yearText = option.text;
 }
 
 function changeValue(setDefault = false) {
@@ -130,10 +157,11 @@ function changeValue(setDefault = false) {
 	}
 
 	if (year != '*') {
+		console.log(year.codigo);
 
 		console.log('URL Value:', `https://parallelum.com.br/fipe/api/v1/${type}/marcas/${brand}/modelos/${model}/anos/${year.codigo}`);
 
-		fetch(`https://parallelum.com.br/fipe/api/v1/${type}/marcas/${brand}/modelos/${model}/anos/${year.codigo}`)
+		fetch(`https://parallelum.com.br/fipe/api/v1/${type}/marcas/${brand}/modelos/${model}/anos/${year}`)
 		.then(function (response) {
 			return response.json();
 		}).then(function (obj) {
@@ -156,6 +184,8 @@ function updateYear(model) {
 				for (year of response) {
 					yearSelector.innerHTML += `<option value="${year.codigo}">${year.nome}</option>`;
 				}
+				elementVisibility(gif, false);
+				elementVisibility(divYear, true);
 			})
 	}
 }
@@ -165,10 +195,6 @@ function updateImage(setDefault = false) {
 	let url = `https://customsearch.googleapis.com/customsearch/v1?cx=${searchEngineId}&num=1&q=${type}%20${brandText}%20${modelText}%20${yearText}&searchType=image&key=${apiKey}`
 	let urlLogo = `https://customsearch.googleapis.com/customsearch/v1?cx=${searchEngineId}&num=1&q=${type}%20logomarca%20${brandText}&searchType=image&key=${apiKey}`
 
-	// if (setDefault) {
-	// 	divImageSelector.innerHTML = '<img src="https://www.quoteinspector.com/media/car-insurance/car-wallet-md.jpg" alt="Carro">'
-	// 	return
-	// }
 	
 	if (type !== '*' && marca !== '*') {
 
@@ -184,7 +210,6 @@ function updateImage(setDefault = false) {
 
 				divResult.style.backgroundImage = "url('" + obj.items[0].link + "')";
 				divResult.style.backgroundRepeat = "no-repeat";
-				// divResult.style.backgroundSize = "cover";
 				divResult.style.backgroundPosition = "center";	
 			
 		
