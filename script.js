@@ -14,7 +14,6 @@ let marca = document.getElementById('marca');
 let modelo = document.getElementById('modelo');
 let ano = document.getElementById('ano');
 let combustivel = document.getElementById('combustivel');
-
 let valor = document.getElementById('value-result');
 let btnConsultar = document.getElementById('button-consultar');
 let divResult = document.getElementById('div-result');
@@ -40,7 +39,6 @@ function elementVisibility(element, param){
 }
 
 function resetInfos() {
-
 	marca.innerHTML = '<b>Marca: </b>';
 	modelo.innerHTML = '<b>Modelo: </b>';
 	ano.innerHTML = '<b>Ano: </b>';
@@ -74,7 +72,6 @@ modelSelector.addEventListener('change', Event => {
 	changeValue(true);
 	updateImage(true);	
 	changeModel();
-
 	resetInfos();
 	elementVisibility(gif, true);
 });
@@ -82,17 +79,18 @@ modelSelector.addEventListener('change', Event => {
 yearSelector.addEventListener('change', Event => {
 	changeYear();
 	elementVisibility(btnConsultar, true);
-
 });
 
 btnConsultar.addEventListener('click', Event => {
+	elementVisibility(gif, true);
 	updateImage();
 	changeValue();
-
 	divResult.style.visibility = 'visible';
 });
 
 btnNovaConsulta.addEventListener('click', Event => {
+	resetInfos();
+	typeSelector.value = "*";
 	location.reload();
 });
 
@@ -153,7 +151,6 @@ function changeYear() {
 function changeValue(setDefault = false) {
 
 	if (setDefault) {
-
 		marca.innerHTML = '';
 		modelo.innerHTML = '';
 		ano.innerHTML = '';
@@ -198,27 +195,26 @@ function updateYear(model) {
 
 function updateImage(setDefault = false) {
 	let urlImage = ''
-	let url = `https://customsearch.googleapis.com/customsearch/v1?cx=${searchEngineId}&num=1&q=${type}%20${brandText}%20${modelText}%20${yearText}&searchType=image&key=${apiKey}`
+	let url = `https://customsearch.googleapis.com/customsearch/v1?cx=${searchEngineId}&num=1&q=${type}%20${brandText}%20${modelText}%20ano%20${yearText}&searchType=image&key=${apiKey}`
 	let urlLogo = `https://customsearch.googleapis.com/customsearch/v1?cx=${searchEngineId}&num=1&q=${type}%20logomarca%20${brandText}&searchType=image&key=${apiKey}`
 
-	
+	divResult.style.backgroundImage = "none";
+
 	if (type !== '*' && marca !== '*') {
 
 		if (model == '' || model == null || model == '*') {
 			url = urlLogo // Irá buscar apenas a logo da marca
 		}
 
-		console.log('URL:', url);
-
 		fetch(url).then(function (response) {
 			return response.json();
 		}).then(function (obj) {
-
-				divResult.style.backgroundImage = "url('" + obj.items[0].link + "')";
-				divResult.style.backgroundRepeat = "no-repeat";
-				divResult.style.backgroundPosition = "center";	
-			
-		
+			divResult.style.backgroundImage = "url('" + obj.items[0].link + "')";
+			divResult.style.backgroundRepeat = "no-repeat";
+			divResult.style.backgroundPosition = "center";
+			divResult.style.backgroundSize = "contain";
+			divResult.style.width = "90%";
+			elementVisibility(gif, false)
 		})
 	}
 
