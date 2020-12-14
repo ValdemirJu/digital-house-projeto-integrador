@@ -14,6 +14,7 @@ let marca = document.getElementById('marca');
 let modelo = document.getElementById('modelo');
 let ano = document.getElementById('ano');
 let combustivel = document.getElementById('combustivel');
+
 let valor = document.getElementById('value-result');
 let btnConsultar = document.getElementById('button-consultar');
 let divResult = document.getElementById('div-result');
@@ -39,6 +40,7 @@ function elementVisibility(element, param){
 }
 
 function resetInfos() {
+
 	marca.innerHTML = '<b>Marca: </b>';
 	modelo.innerHTML = '<b>Modelo: </b>';
 	ano.innerHTML = '<b>Ano: </b>';
@@ -72,6 +74,7 @@ modelSelector.addEventListener('change', Event => {
 	changeValue(true);
 	updateImage(true);	
 	changeModel();
+
 	resetInfos();
 	elementVisibility(gif, true);
 });
@@ -79,12 +82,14 @@ modelSelector.addEventListener('change', Event => {
 yearSelector.addEventListener('change', Event => {
 	changeYear();
 	elementVisibility(btnConsultar, true);
+
 });
 
 btnConsultar.addEventListener('click', Event => {
 	elementVisibility(gif, true);
 	updateImage();
 	changeValue();
+
 	divResult.style.visibility = 'visible';
 });
 
@@ -151,6 +156,7 @@ function changeYear() {
 function changeValue(setDefault = false) {
 
 	if (setDefault) {
+
 		marca.innerHTML = '';
 		modelo.innerHTML = '';
 		ano.innerHTML = '';
