@@ -23,7 +23,7 @@
               </a>
             </li>
             <li>
-              <a href="../consulta">
+              <a href="../consulta/index.html">
                 <button class="button">
                   <img src="../images/search-alt.svg" alt=""/>
                   <p>consulta</p>
@@ -31,7 +31,7 @@
               </a>
             </li>
             <li>
-                <a href="../sobrenos">
+                <a href="../sobrenos/index.html">
                   <button class="button">
                     <img src="../images/user-square.svg" alt=""/>
                     <p>sobre nós</p>
@@ -51,13 +51,18 @@
       </header>
     <section class="section-contato">
         <h1 class="título-contatos">Gostaria de falar com a gente?</h1>
-        <div class="div-form-contato">
+          <form class="div-form-contato" action="" id="form-contato">
             <input type="text" name="nome" id="nome" placeholder="Digite seu nome">
+            <span id="aviso-nome">Você precisa preencher um nome!</span>
             <input type="email" name="email" id="email" placeholder="Digite seu e-mail">
+            <span id="aviso-email">Você precisa preencher um e-mail!</span>
             <input type="text" name="assunto" id="assunto" placeholder="Digite o assunto">
+            <span id="aviso-assunto">Você precisa preencher um assunto!</span>
             <textarea name="mensagem" id="mensagem" cols="30" rows="5" placeholder="Digite sua mensagem..."></textarea>
+            <span id="aviso-mensagem">Sem a mensagem não conseguiremos te responder!</span>
             <button type="submit" id="btn-enviar">Enviar</button>
-        </div>
+          </form>
+
         <div class="div-links-contatos">
               <div class="div-classes-contato"> 
                 <img src="../images/email.svg" alt="" width="25px">
@@ -99,5 +104,7 @@
             </a>
         </div>
     </footer>
+
+    <script src="contato.js"></script>
 </body>
 </html>
