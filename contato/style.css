@@ -75,6 +75,24 @@
     outline: none;
   }
 
+  .div-form-contato span{
+    font-size: 10px;
+    color: red;
+    font-weight: 500;
+    letter-spacing: 1.5;
+    display: none;
+  }
+
+  .div-form-contato p{
+    font-size: 12px;
+    margin-top: 3px;
+    /* padding: 20px 5px; */
+    color: rgb(61, 223, 61);
+    font-weight: 500;
+    letter-spacing: 1.5;
+    display: none;
+  }
+
   #btn-enviar{
     font-family: 'Roboto', sans-serif;
     text-transform: uppercase;
@@ -92,8 +110,7 @@
     background-color: #ffd369;
     color: #222831;
     border: 1px solid #ffd369;
-    transition-duration: 450ms;
-    
+    transition-duration: 450ms;  
 
 }
 

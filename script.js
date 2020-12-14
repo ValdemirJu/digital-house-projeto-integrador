@@ -14,21 +14,38 @@ let marca = document.getElementById('marca');
 let modelo = document.getElementById('modelo');
 let ano = document.getElementById('ano');
 let combustivel = document.getElementById('combustivel');
-let valor = document.getElementById('valor');
+
+let valor = document.getElementById('value-result');
+let btnConsultar = document.getElementById('button-consultar');
+let divResult = document.getElementById('div-result');
+let btnNovaConsulta = document.getElementById('btn-nova-consulta');
+let gif = document.getElementById('gif');
+
+//Elementos para os seletores irem aparecendo aos poucos:
+let divBrand = document.getElementById("div-brand");
+let divModel = document.getElementById("div-model");
+let divYear = document.getElementById("div-year");
 
 const typeSelector = document.getElementById('type');
 const brandSelector = document.getElementById('brand');
 const modelSelector = document.getElementById('model');
 const yearSelector = document.getElementById('year');
-const divImageSelector = document.getElementById('image-result')
-const pValue = document.getElementById('value-result')
+
+function elementVisibility(element, param){
+	if(param){
+		element.style.visibility = "visible";
+	}else{
+		element.style.visibility = "hidden";
+	}
+}
 
 function resetInfos() {
-	marca.innerHTML = '<strong>Marca:</strong>';
-	modelo.innerHTML = '<strong>Modelo:</strong>';
-	ano.innerHTML = '<strong>Ano:</strong>';
-	combustivel.innerHTML = '<strong>Combustível:</strong>';
-	valor.innerHTML = '<strong>Valor:</strong>';
+
+	marca.innerHTML = '<b>Marca: </b>';
+	modelo.innerHTML = '<b>Modelo: </b>';
+	ano.innerHTML = '<b>Ano: </b>';
+	combustivel.innerHTML = '<b>Combustível: </b>';
+	valor.innerHTML = '<b>Valor: </b>';
 }
 
 typeSelector.addEventListener('change', Event => {
@@ -39,6 +56,7 @@ typeSelector.addEventListener('change', Event => {
 	updateImage(true);
 	changeType();
 	resetInfos();
+	elementVisibility(gif, true);
 });
 
 brandSelector.addEventListener('change', Event => {
@@ -48,6 +66,7 @@ brandSelector.addEventListener('change', Event => {
 	updateImage(true);	
 	changeBrand();
 	resetInfos();
+	elementVisibility(gif, true);
 });
 
 modelSelector.addEventListener('change', Event => {
@@ -55,13 +74,26 @@ modelSelector.addEventListener('change', Event => {
 	changeValue(true);
 	updateImage(true);	
 	changeModel();
-	resetInfos
+
+	resetInfos();
+	elementVisibility(gif, true);
 });
 
 yearSelector.addEventListener('change', Event => {
+	changeYear();
+	elementVisibility(btnConsultar, true);
+
+});
+
+btnConsultar.addEventListener('click', Event => {
 	updateImage();
 	changeValue();
-	resetInfos();
+
+	divResult.style.visibility = 'visible';
+});
+
+btnNovaConsulta.addEventListener('click', Event => {
+	location.reload();
 });
 
 function changeType() {
@@ -78,6 +110,8 @@ function updateBrands(type) {
 				for (brand of response) {
 					brandSelector.innerHTML += `<option value="${brand.codigo}">${brand.nome}</option>`;
 				}
+				elementVisibility(gif, false);
+				elementVisibility(divBrand, true);
 			})
 	}
 }
@@ -97,6 +131,8 @@ function updateModels(brand) {
 				for (model of modelos) {
 					modelSelector.innerHTML += `<option value="${model.codigo}">${model.nome}</option>`;
 				}
+				elementVisibility(gif, false);
+				elementVisibility(divModel, true);
 			})
 	}
 }
@@ -108,23 +144,39 @@ function changeModel() {
 	updateYear(model)
 }
 
+function changeYear() {
+	let option = yearSelector.options[yearSelector.selectedIndex];
+	year = option.value;
+	yearText = option.text;
+}
+
 function changeValue(setDefault = false) {
 
 	if (setDefault) {
-		pValue.innerText = '';
+
+		marca.innerHTML = '';
+		modelo.innerHTML = '';
+		ano.innerHTML = '';
+		combustivel.innerHTML = '';
+		valor.innerText = '';
 		return
 	}
 
 	if (year != '*') {
+		console.log(year.codigo);
 
 		console.log('URL Value:', `https://parallelum.com.br/fipe/api/v1/${type}/marcas/${brand}/modelos/${model}/anos/${year.codigo}`);
 
-		fetch(`https://parallelum.com.br/fipe/api/v1/${type}/marcas/${brand}/modelos/${model}/anos/${year.codigo}`)
+		fetch(`https://parallelum.com.br/fipe/api/v1/${type}/marcas/${brand}/modelos/${model}/anos/${year}`)
 		.then(function (response) {
 			return response.json();
 		}).then(function (obj) {
 			if (obj.Valor != '' || obj.Valor != null) {
-				pValue.innerHTML = `<strong>${obj.Valor}</strong>`;
+				marca.innerHTML = `<b>Marca: <b><span>${obj.Marca}</span>`;
+				modelo.innerHTML = `<b>Modelo: <b><span>${obj.Modelo}</span>`;
+				ano.innerHTML = `<b>Ano: <b><span>${obj.AnoModelo}</span>`;
+				combustivel.innerHTML = `<b>Combustível: <b><span>${obj.Combustivel}</span>`;
+				valor.innerHTML = `<b>Valor: <b><span>${obj.Valor}</span>`;
 			}
 		})	
 	}
@@ -138,6 +190,8 @@ function updateYear(model) {
 				for (year of response) {
 					yearSelector.innerHTML += `<option value="${year.codigo}">${year.nome}</option>`;
 				}
+				elementVisibility(gif, false);
+				elementVisibility(divYear, true);
 			})
 	}
 }
@@ -147,10 +201,6 @@ function updateImage(setDefault = false) {
 	let url = `https://customsearch.googleapis.com/customsearch/v1?cx=${searchEngineId}&num=1&q=${type}%20${brandText}%20${modelText}%20${yearText}&searchType=image&key=${apiKey}`
 	let urlLogo = `https://customsearch.googleapis.com/customsearch/v1?cx=${searchEngineId}&num=1&q=${type}%20logomarca%20${brandText}&searchType=image&key=${apiKey}`
 
-	if (setDefault) {
-		divImageSelector.innerHTML = '<img src="https://www.quoteinspector.com/media/car-insurance/car-wallet-md.jpg" alt="Carro">'
-		return
-	}
 	
 	if (type !== '*' && marca !== '*') {
 
@@ -163,7 +213,12 @@ function updateImage(setDefault = false) {
 		fetch(url).then(function (response) {
 			return response.json();
 		}).then(function (obj) {
-			divImageSelector.innerHTML = '<img src="' + obj.items[0].link + '" alt="' + obj.items[0].title + '">'
+
+				divResult.style.backgroundImage = "url('" + obj.items[0].link + "')";
+				divResult.style.backgroundRepeat = "no-repeat";
+				divResult.style.backgroundPosition = "center";	
+			
+		
 		})
 	}
 
