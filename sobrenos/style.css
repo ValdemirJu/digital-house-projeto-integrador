@@ -1,3 +1,9 @@
+.icon-instagram,
+.icon-twitter,
+.icon-facebook {
+  display: none;
+}
+
 .section-sobrenos {
   /* border: 1px solid tomato; */
   width: 80%;
@@ -74,6 +80,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-top: 1em;
 }
 
 .div-colaboradores .redes-sociais-logo {
